@@ -78,20 +78,16 @@ public:
   return ChangeValue(Index);
 }
 
-
+  Standard_EXPORT   TColStd_Array1OfInteger(const TColStd_Array1OfInteger& AnArray);
 
 
 
 protected:
 
-
-
-
-
 private:
 
   
-  Standard_EXPORT   TColStd_Array1OfInteger(const TColStd_Array1OfInteger& AnArray);
+//  Standard_EXPORT   TColStd_Array1OfInteger(const TColStd_Array1OfInteger& AnArray);
 
 
 Standard_Integer myLowerBound;

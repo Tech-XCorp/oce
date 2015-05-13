@@ -372,7 +372,9 @@ public:
       static  TColStd_Array1OfReal& NoWeights() ;
   //! Used as argument for a flatknots evaluation. <br>
 //! <br>
-      static  TColStd_Array1OfInteger& NoMults() ;
+//SVETA
+      static  TColStd_Array1OfInteger NoMults() ;
+//SVETA      static  TColStd_Array1OfInteger& NoMults() ;
   //! Stores in LK  the usefull knots  for the BoorSchem <br>
 //!          on the span Knots(Index) - Knots(Index+1) <br>
   Standard_EXPORT   static  void BuildKnots(const Standard_Integer Degree,const Standard_Integer Index,const Standard_Boolean Periodic,const TColStd_Array1OfReal& Knots,const TColStd_Array1OfInteger& Mults,Standard_Real& LK) ;
