@@ -140,7 +140,7 @@ void Standard_ErrorHandler::Unlink()
 Standard_Boolean Standard_ErrorHandler::IsInTryBlock()
 {
   Standard_ErrorHandler* anActive = FindHandler(Standard_HandlerVoid, Standard_False);
-  return anActive != NULL && anActive->myLabel != NULL;
+  return anActive != NULL && ! CLANG_WORKAROUND_REFERENCE_IS_NULL(anActive->myLabel);
 }
 
 
@@ -154,7 +154,7 @@ void Standard_ErrorHandler::Abort (const Handle(Standard_Failure)& theError)
   Standard_ErrorHandler* anActive = FindHandler(Standard_HandlerVoid, Standard_True);
 
   //==== Check if can do the "longjmp" =======================================
-  if(anActive == NULL || anActive->myLabel == NULL) {
+  if(anActive == NULL || CLANG_WORKAROUND_REFERENCE_IS_NULL(anActive->myLabel) ) {
     cerr << "*** Abort *** an exception was raised, but no catch was found." << endl;
     if (!theError.IsNull())
       cerr << "\t... The exception is:" << theError->GetMessageString() << endl;
