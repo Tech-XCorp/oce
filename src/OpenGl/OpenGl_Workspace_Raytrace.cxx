@@ -375,7 +375,7 @@ Standard_Boolean OpenGl_Workspace::AddRaytraceStructure (const OpenGl_Structure*
 
   Standard_ShortReal  aStructTransformArr[16];
   Standard_ShortReal* aStructTransform = NULL;
-  if (theStructure->Transformation()->mat != NULL)
+  if (! CLANG_WORKAROUND_REFERENCE_IS_NULL(theStructure->Transformation()->mat))
   {
     aStructTransform = aStructTransformArr;
     for (Standard_Integer i = 0; i < 4; ++i)

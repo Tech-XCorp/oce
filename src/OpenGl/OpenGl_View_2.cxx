@@ -735,7 +735,7 @@ void OpenGl_View::RedrawLayer2d (const Handle(OpenGl_PrinterContext)& thePrintCo
                                  const Aspect_CLayer2d&               ACLayer)
 {
 #if !defined(GL_ES_VERSION_2_0)
-  if (&ACLayer == NULL
+  if (CLANG_WORKAROUND_REFERENCE_IS_NULL(ACLayer)
    || ACLayer.ptrLayer == NULL
    || ACLayer.ptrLayer->listIndex == 0) return;
 
