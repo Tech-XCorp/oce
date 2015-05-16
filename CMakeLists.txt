@@ -1179,7 +1179,9 @@ if(MSVC AND OCE_TESTING)
 		endif()
 
 		# Post-build target. In reality it is not a post-build step	, but it doesn't matter
-		add_custom_target(PostBuild ALL ${CMAKE_COMMAND} -E echo Copying dependent files DEPENDS ALL)
+# This dependency creates a bad target
+		# add_custom_target(PostBuild ALL ${CMAKE_COMMAND} -E echo Copying dependent files DEPENDS ALL)
+		add_custom_target(PostBuild ALL ${CMAKE_COMMAND} -E echo Copying dependent files)
 
 		if ( CMAKE_CONFIGURATION_TYPES )
 
