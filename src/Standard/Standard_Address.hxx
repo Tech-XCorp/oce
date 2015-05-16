@@ -47,4 +47,6 @@ inline Standard_Boolean IsEqual(const Standard_Address One
 			       ,const Standard_Address Two)
 { return One == Two; }
 
+#define CLANG_WORKAROUND_REFERENCE_IS_NULL(ref) (reinterpret_cast<const void*>(&ref) == NULL)
+
 #endif
