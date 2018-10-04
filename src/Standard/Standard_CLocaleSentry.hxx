@@ -30,11 +30,9 @@
   #endif
 
   //! We check _GNU_SOURCE for glibc extensions here and it is always defined by g++ compiler.
-// xlocale.h has been removed from glibc as of 2.26
-// https://answers.unrealengine.com/questions/705076/xlocaleh-not-found-on-linux.html
-  // #if defined(_GNU_SOURCE) && !defined(__ANDROID__)
-    // #define HAVE_XLOCALE_H
-  // #endif
+  #if defined(_GNU_SOURCE) && !defined(__ANDROID__)
+    #define HAVE_XLOCALE_H
+  #endif
 #endif // ifndef HAVE_LOCALE_H
 
 #ifdef HAVE_XLOCALE_H
