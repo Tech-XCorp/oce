@@ -23,7 +23,7 @@ set(OCE_VERSION_MAJOR 0)
 set(OCE_VERSION_MINOR 18)
 # OCE_VERSION_PATCH is used for bugfixes releases only
 # (uncomment following line)
-set(OCE_VERSION_PATCH 2)
+set(OCE_VERSION_PATCH 3)
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(OCE_VERSION_DEVEL)
 
@@ -354,7 +354,7 @@ if(OCE_VISUALISATION AND OCE_WITH_VTK)
 	find_package(VTK QUIET COMPONENTS vtkCommonCore vtkInteractionStyle vtkIOExport vtkIOLegacy)
 
 	# Now that we know we have a VTK version available, we call find_package with the correct rendering backend.
-	if(VTK_VERSION_MAJOR EQUAL 7 AND VTK_RENDERING_BACKEND)
+	if( NOT(VTK_VERSION_MAJOR LESS 7) AND VTK_RENDERING_BACKEND)
 		# In VTK 7, the rendering backend is exported in the variable VTK_RENDERING_BACKEND
 		find_package(VTK QUIET COMPONENTS vtkRendering${VTK_RENDERING_BACKEND} vtkCommonCore vtkInteractionStyle vtkIOExport vtkIOLegacy)
 	else()
@@ -634,6 +634,7 @@ if (NOT WIN32)
 	# compilation anywhere in OCE
 	include(CheckIncludeFile)
 	check_include_file(strings.h HAVE_STRINGS_H)
+	check_include_file(xlocale.h HAVE_XLOCALE_H)
 	include(CheckIncludeFileCXX)
 	check_include_file_cxx(mm_malloc.h HAVE_MM_MALLOC_H)
 	check_include_file_cxx(atomic.h OCE_HAVE_ATOMIC_H)
