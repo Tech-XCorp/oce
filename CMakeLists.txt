@@ -443,6 +443,10 @@ endif(OCE_VISU_DEP)
 
 if(OCE_REQUIRES_FREETYPE AND NOT OCE_SKIP_FIND_LIBRARIES)
 	## TKService requires FreeType
+        ## Set env var if set on configure line
+        if (FREETYPE_ROOT_DIR)
+          set(ENV{FREETYPE_DIR} "${FREETYPE_ROOT_DIR}")
+        endif ()
 	find_package(Freetype REQUIRED)
 	
 	if(CMAKE_CONFIGURATION_TYPES OR NMAKE)
